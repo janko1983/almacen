@@ -1,0 +1,34 @@
+<?php 
+$title = 'My Almacen';
+$this->headtitle($title);
+?>
+<h1><?php echo $this->escapehtml($title);?></h1>
+<p><a class="btn btn-success" href="<?php echo $this->url('almacen',array(
+    'action'=>'add'
+));?>">Add new Almacen</a></p>
+<table class="table">
+<tr>
+	<th>Nombre</th>
+	<th>Direccion</th>
+	<th>Codigo Postal</th>
+	<th>Ciudad</th>
+	<th>Estado</th>
+	<th>Pais</th>
+	<th>&nbsp;</th>
+</tr>
+<?php foreach($almacen as $almacen) : ?>
+<tr>
+	<td><?php echo $this->escapehtml($almacen->nombre);?></td>
+	<td><?php echo $this->escapehtml($almacen->direccion);?></td>
+	<td><?php echo $this->escapehtml($almacen->cp);?></td>
+	<td><?php echo $this->escapehtml($almacen->idciudad);?></td>
+	<td><?php echo $this->escapehtml($almacen->idestado);?></td>
+	<td><?php echo $this->escapehtml($almacen->idpais);?></td>
+	<td><a class="btn btn-warning"  href="<?php echo $this->url('almacen', array(
+	    'action' => 'edit', 'idalmacen' => $almacen->id	));?>">Edit</a>
+	    <a class="btn btn-danger" href="<?php echo $this->url('almacen',array(
+	    'action' => 'delete', 'idalmacen' => $almacen->id));?>">Delete</a>
+	</td>
+</tr>
+<?php endforeach;?>
+</table>

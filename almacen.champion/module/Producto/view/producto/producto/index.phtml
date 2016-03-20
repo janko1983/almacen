@@ -1,0 +1,34 @@
+<?php 
+    $title  = 'Productos Quimicos';
+    $this->headtitle($title);
+?>
+
+<h1>
+	<?php echo $this->escapehtml($title);?>
+</h1>
+<p><a href="<?php echo $this->url('producto',array(
+    'action'=>'add'))?>">Add nuevo Producto</a></p>
+
+<table class="table">
+	<tr>
+		<th>id Producto</th>
+		<th>Descripcion</th>
+		<th>Categoria</th>
+		<th>Densidad</th>
+		<th>Volumen</th>
+		<th>&nbsp;</th>
+	</tr>
+	<?php foreach ($producto as $producto) : ?>
+	<tr>
+		<td><?php echo $this->escapehtml($producto->id);?></td>
+		<td><?php echo $this->escapehtml($producto->descripcion);?></td>
+		<td><?php echo $this->escapehtml($producto->idcategoria);?></td>
+		<td><?php echo $this->escapehtml($producto->iddensidad);?></td>
+		<td><?php echo $this->escapehtml($producto->idvolumen);?></td>
+		<td>
+			<a href="<?php echo $this->url('producto',array('action'=>'edit','idproducto'=>$producto->id));?>">Editar</a>
+			<a href="<?php echo $this->url('producto',array('action'=>'delete','idproducto'=>$producto->id));?>">Borrar</a>
+		</td>
+	</tr>
+	<?php endforeach;?>
+</table>
